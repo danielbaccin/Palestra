@@ -1,14 +1,16 @@
-package br.com.kenuiapps.palestra;
+package br.com.kenuiapps.palestra.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.melnykov.fab.FloatingActionButton;
+
+import br.com.kenuiapps.palestra.R;
 
 
 public class MainActivity extends Activity {
@@ -18,17 +20,15 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView listView = (ListView) findViewById(R.id.listAlunos);
+        ListView listaDeAlunos = (ListView) findViewById(R.id.listAlunos);
+        String[] values = new String[] { "José", "Pedro", "João", "Davi", "Rafael"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, values);
+        listaDeAlunos.setAdapter(adapter);
+
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabAddProduto);
-        fab.attachToListView(listView);
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        fab.attachToListView(listaDeAlunos);
     }
 
     @Override

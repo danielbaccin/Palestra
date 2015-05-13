@@ -1,10 +1,12 @@
-package br.com.kenuiapps.palestra;
+package br.com.kenuiapps.palestra.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
+
+import br.com.kenuiapps.palestra.R;
 
 /**
  * Created by daniel on 13/05/15.
