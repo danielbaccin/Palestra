@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "br.com.kenuiapps.palestra"
-        minSdkVersion 21
+        minSdkVersion 17
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
@@ -20,6 +20,7 @@ android {
 }
 
 dependencies {
-    compile 'com.melnykov:floatingactionbutton:1.3.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.melnykov:floatingactionbutton:1.3.0'
 }
