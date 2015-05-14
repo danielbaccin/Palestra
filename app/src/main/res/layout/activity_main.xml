@@ -18,7 +18,7 @@
         android:layout_margin="16dp"
         android:onClick="abrirFormAluno"
         android:src="@drawable/ic_action_new"
-        fab:fab_colorNormal="@color/BtnDefault"
-        fab:fab_colorPressed="@color/BtnDefaultPressed"
-        fab:fab_colorRipple="@color/BtnDefaultPressed" />
+        fab:fab_colorNormal="@color/OrangeRed"
+        fab:fab_colorPressed="@color/Orange"
+        fab:fab_colorRipple="@color/Orange" />
 </FrameLayout>

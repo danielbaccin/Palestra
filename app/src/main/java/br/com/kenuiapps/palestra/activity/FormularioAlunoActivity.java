@@ -1,6 +1,8 @@
 package br.com.kenuiapps.palestra.activity;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -23,6 +25,7 @@ public class FormularioAlunoActivity extends ActionBarActivity{
     private TextView email;
     private TextView telefone;
     private Spinner curso;
+    private android.support.v7.app.ActionBar actionBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,27 @@ public class FormularioAlunoActivity extends ActionBarActivity{
         telefone = (TextView) findViewById(R.id.edit_telefone_aluno);
         curso = (Spinner) findViewById(R.id.spinner_cursos);
 
+        actionBar = getSupportActionBar();
+
+
+        /*
+        int sdk = android.os.Build.VERSION.SDK_INT;
+        if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            setBackgroundDrawable();
+        } else {
+            setBackground();
+        }
+         */
+
+        if(actionBar!=null)
+            actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFF4500));
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override
