@@ -16,6 +16,14 @@ public class Aluno {
     private String endereco;
     private String curso;
 
+    public Aluno(String nome, String telefone, String endereco, String email, String curso) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.email = email;
+        this.curso = curso;
+    }
+
     public String getEmail() {
         return email;
     }

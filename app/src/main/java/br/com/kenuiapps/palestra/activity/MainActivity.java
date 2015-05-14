@@ -3,32 +3,61 @@ package br.com.kenuiapps.palestra.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 
 import com.melnykov.fab.FloatingActionButton;
 
+import java.util.List;
+
 import br.com.kenuiapps.palestra.R;
+import br.com.kenuiapps.palestra.adapter.ListaAlunosAdapter;
+import br.com.kenuiapps.palestra.dao.AlunoDAO;
+import br.com.kenuiapps.palestra.model.Aluno;
 
 
 public class MainActivity extends Activity {
+
+    private ListView listaDeAlunos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView listaDeAlunos = (ListView) findViewById(R.id.listAlunos);
-        String[] values = new String[] { "José", "Pedro", "João", "Davi", "Rafael"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, values);
-        listaDeAlunos.setAdapter(adapter);
-
-
+        listaDeAlunos = (ListView) findViewById(R.id.listAlunos);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabAddProduto);
         fab.attachToListView(listaDeAlunos);
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        carregaLista();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_main , menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    private void carregaLista() {
+        AlunoDAO dao = new AlunoDAO(this);
+        List<Aluno> alunos =  dao.getLista();
+        dao.close();
+
+        ListaAlunosAdapter listaAlunosAdapter = new ListaAlunosAdapter(this, alunos);
+        listaDeAlunos.setAdapter(listaAlunosAdapter);
+
     }
 
     @Override
@@ -39,7 +68,7 @@ public class MainActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_sincronizar) {
             return true;
         }
 

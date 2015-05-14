@@ -11,5 +11,6 @@
     <string name="cursos">Cursos</string>
     <string name="salvar">Salvar</string>
     <string name="titulo_formulario">Cadastro Aluno</string>
+    <string name="sincronizar">Sincronizar</string>
 
 </resources>
