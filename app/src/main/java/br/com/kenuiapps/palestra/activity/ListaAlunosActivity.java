@@ -2,7 +2,9 @@ package br.com.kenuiapps.palestra.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,9 +23,10 @@ import br.com.kenuiapps.palestra.dao.AlunoDAO;
 import br.com.kenuiapps.palestra.model.Aluno;
 
 
-public class MainActivity extends Activity {
+public class ListaAlunosActivity extends ActionBarActivity {
 
     private ListView listaDeAlunos;
+    private android.support.v7.app.ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,12 @@ public class MainActivity extends Activity {
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabAddProduto);
         fab.attachToListView(listaDeAlunos);
+
+         actionBar = getSupportActionBar();
+
+        if(actionBar!=null)
+            actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFF4500));
+
     }
 
 
@@ -62,12 +71,8 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_sincronizar) {
             return true;
         }

@@ -1,6 +1,5 @@
 package br.com.kenuiapps.palestra.activity;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 
 import br.com.kenuiapps.palestra.R;
 import br.com.kenuiapps.palestra.dao.AlunoDAO;
-import br.com.kenuiapps.palestra.helper.DataBaseHelper;
 import br.com.kenuiapps.palestra.model.Aluno;
 
 /**
@@ -40,16 +38,6 @@ public class FormularioAlunoActivity extends ActionBarActivity{
 
         actionBar = getSupportActionBar();
 
-
-        /*
-        int sdk = android.os.Build.VERSION.SDK_INT;
-        if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-            setBackgroundDrawable();
-        } else {
-            setBackground();
-        }
-         */
-
         if(actionBar!=null)
             actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFF4500));
 
@@ -67,7 +55,7 @@ public class FormularioAlunoActivity extends ActionBarActivity{
         switch (item.getItemId()){
             case R.id.action_salvar:
                 salvarAluno();
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, ListaAlunosActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }
