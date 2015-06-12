@@ -9,7 +9,6 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".activity.ListaParticipantesActivity"
-                    android:label="@string/lista_participantes"
                     android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +18,6 @@
         </activity>
 
        <activity android:name=".activity.FormularioParticipanteActivity"
-                 android:label="@string/titulo_formulario"
                  android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
 
     </application>

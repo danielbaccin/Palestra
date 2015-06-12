@@ -43,7 +43,7 @@ public class ListaParticipantesAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        View linha = activity.getLayoutInflater().inflate(R.layout.lista_alunos, null);
+        View linha = activity.getLayoutInflater().inflate(R.layout.lista_participantes, null);
 
         Participante participante = participantes.get(position);
 

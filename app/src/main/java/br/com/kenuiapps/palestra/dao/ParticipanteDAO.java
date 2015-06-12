@@ -47,4 +47,12 @@ public class ParticipanteDAO extends PalestraDAO{
         participante.setId(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.Participante.ID)));
         return participante;
     }
+
+    public boolean atualizaPresencaPorId(Integer idParticipante, int flagDePresenca) {
+        String[] args = {idParticipante.toString()};
+        ContentValues values = new ContentValues();
+        values.put(DataBaseHelper.Participante.PRESENTE, flagDePresenca);
+        int atualizou = getDb().update(DataBaseHelper.Participante.TABELA, values, DataBaseHelper.Participante.ID + " = ?", args);
+        return  atualizou == 1;
+    }
 }

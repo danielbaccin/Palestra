@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import br.com.kenuiapps.palestra.R;
@@ -27,7 +26,7 @@ public class FormularioParticipanteActivity extends ActionBarActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.formulario_aluno);
+        setContentView(R.layout.formulario_participante);
 
         nome = (TextView) findViewById(R.id.edit_nome_aluno);
         endereco = (TextView) findViewById(R.id.edit_endereco_aluno);
@@ -36,8 +35,10 @@ public class FormularioParticipanteActivity extends ActionBarActivity{
 
         actionBar = getSupportActionBar();
 
-        if(actionBar!=null)
+        if(actionBar!=null){
             actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFF4500));
+            actionBar.setTitle(R.string.titulo_formulario);
+        }
 
 
     }
@@ -71,7 +72,7 @@ public class FormularioParticipanteActivity extends ActionBarActivity{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_form_aluno, menu);
+        getMenuInflater().inflate(R.menu.menu_form_participante, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

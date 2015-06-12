@@ -6,4 +6,9 @@
         android:title="@string/receber_lista"
         android:icon="@drawable/ic_receber"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_enviar_lista"
+        android:title="@string/enviar_lista"
+        android:icon="@drawable/ic_enviar"
+        app:showAsAction="ifRoom" />
 </menu>

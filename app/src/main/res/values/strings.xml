@@ -19,5 +19,7 @@
     <string name="nao">Nao</string>
     <string name="receber_lista">Baixar lista</string>
     <string name="lista_participantes">Lista de Participantes</string>
+    <string name="enviar_lista">Enviar Lista</string>
+    <string name="alert_image_content_description">Alert Image</string>
 
 </resources>

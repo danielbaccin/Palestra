@@ -21,6 +21,7 @@ import java.util.List;
 
 import br.com.kenuiapps.palestra.R;
 import br.com.kenuiapps.palestra.adapter.ListaParticipantesAdapter;
+import br.com.kenuiapps.palestra.custon.CustomDialogBuilder;
 import br.com.kenuiapps.palestra.dao.ParticipanteDAO;
 import br.com.kenuiapps.palestra.model.Participante;
 
@@ -28,10 +29,10 @@ import br.com.kenuiapps.palestra.model.Participante;
 public class ListaParticipantesActivity extends ActionBarActivity implements  AdapterView.OnItemClickListener{
 
     private AlertDialog alertDialog;
-    private int participanteSelecionado;
     private Participante participante;
     private ListView listaDeParticipantes;
     private android.support.v7.app.ActionBar actionBar;
+    private ParticipanteDAO dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +46,10 @@ public class ListaParticipantesActivity extends ActionBarActivity implements  Ad
         fab.attachToListView(listaDeParticipantes);
 
         actionBar = getSupportActionBar();
-        if(actionBar!=null)
+        if(actionBar!=null){
             actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFF4500));
-
+            actionBar.setTitle(R.string.lista_participantes);
+        }
     }
 
 
@@ -65,7 +67,7 @@ public class ListaParticipantesActivity extends ActionBarActivity implements  Ad
     }
 
     private void carregaLista() {
-        ParticipanteDAO dao = new ParticipanteDAO(this);
+        dao = new ParticipanteDAO(this);
         List<Participante> participantes =  dao.getLista();
         dao.close();
 
@@ -92,11 +94,43 @@ public class ListaParticipantesActivity extends ActionBarActivity implements  Ad
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        listOnItemClick((Participante) parent.getItemAtPosition(position), view);
+        participante = (Participante) parent.getItemAtPosition(position);
+        listOnItemClick(participante, view);
     }
 
 
     private void listOnItemClick(final Participante participante, final View view) {
+
+        CustomDialogBuilder customDialogBuilder = new CustomDialogBuilder(view.getContext()).
+                setTitle(getString(R.string.dialog_participante_title)).
+                setTitleColor("#000000").
+                setDividerColor("#FF7F27").
+                setMessage(getString(R.string.confirmacao_presenca));
+
+        customDialogBuilder.setNegativeButton(R.string.sim, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ImageView imageView = (ImageView)  view.findViewById(R.id.icon_participante);
+                imageView.setImageDrawable(ListaParticipantesActivity.this.getResources().getDrawable(R.drawable.ic_done_black_24dp));
+                if (atualizaPresenca(participante.getId(), 1)){
+                    Toast.makeText(ListaParticipantesActivity.this, "Presença confirmada", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        customDialogBuilder.setPositiveButton(R.string.nao, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ImageView imageView = (ImageView)  view.findViewById(R.id.icon_participante);
+                imageView.setImageDrawable(ListaParticipantesActivity.this.getResources().getDrawable(R.drawable.ic_action_accept));
+                if (atualizaPresenca(participante.getId(), 0)){
+                    Toast.makeText(ListaParticipantesActivity.this, "Ausencia confirmada", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        customDialogBuilder.show();
+
+
+/*
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle(getString(R.string.dialog_participante_title));
         dialog.setMessage(getString(R.string.confirmacao_presenca));
@@ -105,7 +139,9 @@ public class ListaParticipantesActivity extends ActionBarActivity implements  Ad
             public void onClick(DialogInterface dialog, int which) {
                 ImageView imageView = (ImageView)  view.findViewById(R.id.icon_participante);
                 imageView.setImageDrawable(ListaParticipantesActivity.this.getResources().getDrawable(R.drawable.ic_done_black_24dp));
-                Toast.makeText(ListaParticipantesActivity.this, "Presença confirmada", Toast.LENGTH_SHORT).show();
+               if (atualizaPresenca(participante.getId(), 1)){
+                   Toast.makeText(ListaParticipantesActivity.this, "Presença confirmada", Toast.LENGTH_SHORT).show();
+               }
             }
         });
         dialog.setPositiveButton(R.string.nao, new DialogInterface.OnClickListener() {
@@ -113,10 +149,20 @@ public class ListaParticipantesActivity extends ActionBarActivity implements  Ad
             public void onClick(DialogInterface dialog, int which) {
                 ImageView imageView = (ImageView)  view.findViewById(R.id.icon_participante);
                 imageView.setImageDrawable(ListaParticipantesActivity.this.getResources().getDrawable(R.drawable.ic_action_accept));
-                Toast.makeText(ListaParticipantesActivity.this, "Ausencia confirmada", Toast.LENGTH_SHORT).show();
+                if (atualizaPresenca(participante.getId(), 0)){
+                    Toast.makeText(ListaParticipantesActivity.this, "Ausencia confirmada", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         dialog.show();
+        */
+    }
+
+    private boolean atualizaPresenca(int idParticipante, int flagDePresenca) {
+        dao = new ParticipanteDAO(this);
+        boolean atualizou = dao.atualizaPresencaPorId(idParticipante, flagDePresenca);
+        dao.close();
+        return atualizou;
     }
 
 }
