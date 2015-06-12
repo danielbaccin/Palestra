@@ -10,19 +10,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import br.com.kenuiapps.palestra.R;
-import br.com.kenuiapps.palestra.dao.AlunoDAO;
-import br.com.kenuiapps.palestra.model.Aluno;
+import br.com.kenuiapps.palestra.dao.ParticipanteDAO;
+import br.com.kenuiapps.palestra.model.Participante;
 
 /**
  * Created by daniel on 13/05/15.
  */
-public class FormularioAlunoActivity extends ActionBarActivity{
+public class FormularioParticipanteActivity extends ActionBarActivity{
 
     private TextView nome;
     private TextView endereco;
     private TextView email;
     private TextView telefone;
-    private Spinner curso;
     private android.support.v7.app.ActionBar actionBar;
 
     @Override
@@ -34,7 +33,6 @@ public class FormularioAlunoActivity extends ActionBarActivity{
         endereco = (TextView) findViewById(R.id.edit_endereco_aluno);
         email = (TextView) findViewById(R.id.edit_email_aluno);
         telefone = (TextView) findViewById(R.id.edit_telefone_aluno);
-        curso = (Spinner) findViewById(R.id.spinner_cursos);
 
         actionBar = getSupportActionBar();
 
@@ -55,20 +53,19 @@ public class FormularioAlunoActivity extends ActionBarActivity{
         switch (item.getItemId()){
             case R.id.action_salvar:
                 salvarAluno();
-                startActivity(new Intent(this, ListaAlunosActivity.class));
+                startActivity(new Intent(this, ListaParticipantesActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }
 
     private void salvarAluno() {
-        AlunoDAO dao = new AlunoDAO(this);
+        ParticipanteDAO dao = new ParticipanteDAO(this);
 
-        Aluno aluno = new Aluno(nome.getText().toString(),
+        Participante participante = new Participante(nome.getText().toString(),
                                 telefone.getText().toString(),
                                 endereco.getText().toString(),
-                                email.getText().toString(),
-                                "");//curso.getSelectedItem().toString());
-        dao.salva(aluno);
+                                email.getText().toString(), 1 );
+        dao.salva(participante);
         dao.close();
     }
 

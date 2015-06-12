@@ -56,23 +56,6 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailSubject" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/cursos"
-            android:layout_marginTop="10dp" />
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/OrangeRed">
-
-            <Spinner
-                android:id="@+id/spinner_cursos"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </FrameLayout>
-
     </LinearLayout>
 
 </ScrollView>

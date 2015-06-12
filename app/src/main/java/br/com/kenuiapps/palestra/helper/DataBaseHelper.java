@@ -19,13 +19,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE aluno"+
+        db.execSQL("CREATE TABLE participante"+
                     " (_id INTEGER PRIMARY KEY," +
                     " nome TEXT," +
                     " telefone TEXT," +
                     " endereco TEXT," +
                     " email TEXT," +
-                    " curso TEXT);"
+                    " presente INTEGER);"
                   );
 
     }
@@ -37,15 +37,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public static class Aluno {
-        public static final String TABELA = "aluno";
+    public static class Participante {
+        public static final String TABELA = "participante";
         public static final String ID = "_id";
         public static final String NOME = "nome";
         public static final String TELEFONE = "telefone";
         public static final String ENDERECO = "endereco";
         public static final String EMAIL = "email";
-        public static final String CURSO = "curso";
-        public static final String[] COLUNAS = new String[]{ID, NOME, TELEFONE, ENDERECO, EMAIL, CURSO};
+        public static final String PRESENTE = "presente";
+        public static final String[] COLUNAS = new String[]{ID, NOME, TELEFONE, ENDERECO, EMAIL, PRESENTE};
     }
 
 }

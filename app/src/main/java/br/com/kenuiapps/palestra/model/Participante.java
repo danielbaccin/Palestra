@@ -7,21 +7,31 @@ import br.com.kenuiapps.palestra.helper.DataBaseHelper;
 /**
  * Created by daniel on 13/05/15.
  */
-public class Aluno {
+public class Participante {
 
     private Integer id;
     private String nome;
     private String telefone;
     private String email;
     private String endereco;
-    private String curso;
+    private Integer presente;
 
-    public Aluno(String nome, String telefone, String endereco, String email, String curso) {
+    public Participante(){}
+
+    public Participante(String nome, String telefone, String endereco, String email, Integer presente) {
         this.nome = nome;
         this.telefone = telefone;
         this.endereco = endereco;
         this.email = email;
-        this.curso = curso;
+        this.presente = presente;
+    }
+
+    public Integer getPresente() {
+        return presente;
+    }
+
+    public void setPresente(Integer presente) {
+        this.presente = presente;
     }
 
     public String getEmail() {
@@ -64,22 +74,14 @@ public class Aluno {
         this.endereco = endereco;
     }
 
-    public String getCurso() {
-        return curso;
-    }
-
-    public void setCurso(String curso) {
-        this.curso = curso;
-    }
-
     public ContentValues getContentValues() {
         ContentValues values = new ContentValues();
-        values.put(DataBaseHelper.Aluno.ID, getId());
-        values.put(DataBaseHelper.Aluno.NOME, getNome());
-        values.put(DataBaseHelper.Aluno.TELEFONE, getTelefone());
-        values.put(DataBaseHelper.Aluno.ENDERECO, getEndereco());
-        values.put(DataBaseHelper.Aluno.EMAIL, getEmail());
-        values.put(DataBaseHelper.Aluno.CURSO, getCurso());
+        values.put(DataBaseHelper.Participante.ID, getId());
+        values.put(DataBaseHelper.Participante.NOME, getNome());
+        values.put(DataBaseHelper.Participante.TELEFONE, getTelefone());
+        values.put(DataBaseHelper.Participante.ENDERECO, getEndereco());
+        values.put(DataBaseHelper.Participante.EMAIL, getEmail());
+        values.put(DataBaseHelper.Participante.PRESENTE, getPresente());
         return values;
     }
 }
