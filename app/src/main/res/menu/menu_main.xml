@@ -2,8 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_sincronizar"
-        android:title="@string/sincronizar"
-        android:icon="@drawable/ic_action_refresh"
+        android:id="@+id/action_receber_lista"
+        android:title="@string/receber_lista"
+        android:icon="@drawable/ic_receber"
         app:showAsAction="ifRoom" />
 </menu>

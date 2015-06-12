@@ -12,5 +12,13 @@
     <string name="salvar">Salvar</string>
     <string name="titulo_formulario">Cadastro Aluno</string>
     <string name="sincronizar">Sincronizar</string>
+    <string name="editar">Editar</string>
+    <string name="excluir">Excluir</string>
+    <string name="opcoes">Opções</string>
+    <string name="dialog_participante_title">Participante</string>
+    <string name="confirmacao_presenca">Confirma Presença?</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Nao</string>
+    <string name="receber_lista">Baixar lista</string>
 
 </resources>
