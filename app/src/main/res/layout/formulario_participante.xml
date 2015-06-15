@@ -35,18 +35,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/endereco" />
-
-        <EditText
-            android:id="@+id/edit_endereco_aluno"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/email"
             android:layout_marginTop="10dp" />
 
@@ -55,6 +43,53 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailSubject" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tamanhoDaBlusa"
+            android:layout_marginTop="10dp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal" >
+
+        <RadioGroup
+            android:id="@+id/tamanhoDaBlusa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentLeft="true">
+
+            <RadioButton
+                android:id="@+id/tamanhoP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tamanhoP"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/tamanhoM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tamanhoM" />
+
+            <RadioButton
+                android:id="@+id/tamanhoG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tamanhoG" />
+            <RadioButton
+                android:id="@+id/tamanhoGG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tamanhoGG" />
+
+        </RadioGroup>
+    </LinearLayout>
+
 
     </LinearLayout>
 

@@ -47,14 +47,17 @@ public class ListaParticipantesAdapter extends BaseAdapter {
 
         Participante participante = participantes.get(position);
 
-        TextView nome = (TextView) linha.findViewById(R.id.lista_aluno_nome);
-        nome.setText(participante.getNome());
+        TextView textViewNome = (TextView) linha.findViewById(R.id.lista_aluno_nome);
+        textViewNome.setText(participante.getNome());
 
-        ImageView iconeDePresenca = (ImageView) linha.findViewById(R.id.icon_participante);
+        ImageView imageViewPresenca = (ImageView) linha.findViewById(R.id.icon_participante);
+
         if(participante.getPresente().equals(1)){
-            iconeDePresenca.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_done_black_24dp));
+            imageViewPresenca.setImageDrawable(
+                    activity.getResources().getDrawable(R.drawable.ic_done_black_24dp));
         }else{
-            iconeDePresenca.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_action_accept));
+            imageViewPresenca.setImageDrawable(
+                    activity.getResources().getDrawable(R.drawable.ic_action_accept));
         }
 
         return linha;

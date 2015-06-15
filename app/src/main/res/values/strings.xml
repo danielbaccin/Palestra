@@ -21,5 +21,10 @@
     <string name="lista_participantes">Lista de Participantes</string>
     <string name="enviar_lista">Enviar Lista</string>
     <string name="alert_image_content_description">Alert Image</string>
+    <string name="tamanhoP">P</string>
+    <string name="tamanhoM">M</string>
+    <string name="tamanhoG">G</string>
+    <string name="tamanhoDaBlusa">Tamanho da blusa</string>
+    <string name="tamanhoGG">GG</string>
 
 </resources>

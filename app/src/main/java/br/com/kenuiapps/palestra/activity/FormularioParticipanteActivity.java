@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import br.com.kenuiapps.palestra.R;
@@ -22,6 +23,7 @@ public class FormularioParticipanteActivity extends ActionBarActivity{
     private TextView email;
     private TextView telefone;
     private android.support.v7.app.ActionBar actionBar;
+    private RadioGroup tamanhoDaBlusa;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,9 +31,10 @@ public class FormularioParticipanteActivity extends ActionBarActivity{
         setContentView(R.layout.formulario_participante);
 
         nome = (TextView) findViewById(R.id.edit_nome_aluno);
-        endereco = (TextView) findViewById(R.id.edit_endereco_aluno);
+        //endereco = (TextView) findViewById(R.id.edit_endereco_aluno);
         email = (TextView) findViewById(R.id.edit_email_aluno);
         telefone = (TextView) findViewById(R.id.edit_telefone_aluno);
+        tamanhoDaBlusa = (RadioGroup) findViewById(R.id.tamanhoDaBlusa);
 
         actionBar = getSupportActionBar();
 
@@ -64,8 +67,9 @@ public class FormularioParticipanteActivity extends ActionBarActivity{
 
         Participante participante = new Participante(nome.getText().toString(),
                                 telefone.getText().toString(),
-                                endereco.getText().toString(),
-                                email.getText().toString(), 1 );
+                                "",
+                                email.getText().toString(), 1 ,
+                                tamanhoDaBlusa.getCheckedRadioButtonId());
         dao.salva(participante);
         dao.close();
     }

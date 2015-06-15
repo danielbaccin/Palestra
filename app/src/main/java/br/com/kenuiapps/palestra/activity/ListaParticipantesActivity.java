@@ -39,10 +39,10 @@ public class ListaParticipantesActivity extends ActionBarActivity implements  Ad
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listaDeParticipantes = (ListView) findViewById(R.id.listAlunos);
+        listaDeParticipantes = (ListView) findViewById(R.id.listParticipantes);
         listaDeParticipantes.setOnItemClickListener(this);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabAddProduto);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabAddParticipante);
         fab.attachToListView(listaDeParticipantes);
 
         actionBar = getSupportActionBar();
@@ -87,8 +87,9 @@ public class ListaParticipantesActivity extends ActionBarActivity implements  Ad
         return super.onOptionsItemSelected(item);
     }
 
-    public void abrirFormAluno(View view){
-        startActivity(new Intent(this, FormularioParticipanteActivity.class));
+    public void abrirFormParticipante(View view){
+        Intent irParaFormulario = new Intent(this, FormularioParticipanteActivity.class);
+        startActivity(irParaFormulario);
     }
 
 

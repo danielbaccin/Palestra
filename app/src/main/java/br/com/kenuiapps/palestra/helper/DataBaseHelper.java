@@ -25,7 +25,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     " telefone TEXT," +
                     " endereco TEXT," +
                     " email TEXT," +
-                    " presente INTEGER);"
+                    " presente INTEGER, " +
+                    " tamanhoBlusa INTEGER);"
                   );
 
     }
@@ -45,7 +46,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         public static final String ENDERECO = "endereco";
         public static final String EMAIL = "email";
         public static final String PRESENTE = "presente";
-        public static final String[] COLUNAS = new String[]{ID, NOME, TELEFONE, ENDERECO, EMAIL, PRESENTE};
+        public static final String TAMANHO_BLUSA = "tamanhoBlusa";
+        public static final String[] COLUNAS = new String[]{ID, NOME, TELEFONE, ENDERECO, EMAIL, PRESENTE, TAMANHO_BLUSA};
     }
 
 }

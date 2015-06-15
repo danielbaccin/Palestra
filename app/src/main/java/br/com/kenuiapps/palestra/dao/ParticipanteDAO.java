@@ -8,13 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.kenuiapps.palestra.helper.DataBaseHelper;
+import br.com.kenuiapps.palestra.model.Participante;
 
 /**
  * Created by daniel on 13/05/15.
  */
 public class ParticipanteDAO extends PalestraDAO{
 
-    private List<br.com.kenuiapps.palestra.model.Participante> lista;
+    private List<Participante> lista;
 
     public ParticipanteDAO(Context context) {
         super(context);
@@ -24,11 +25,11 @@ public class ParticipanteDAO extends PalestraDAO{
         return getDb().insert(DataBaseHelper.Participante.TABELA, null, values);
     }
 
-    public List<br.com.kenuiapps.palestra.model.Participante> getLista() {
+    public List<Participante> getLista() {
         Cursor cursor = getDb().query(DataBaseHelper.Participante.TABELA, DataBaseHelper.Participante.COLUNAS, null, null, null, null, null);
         List<br.com.kenuiapps.palestra.model.Participante> participantes = new ArrayList<br.com.kenuiapps.palestra.model.Participante>();
         while(cursor.moveToNext()){
-            br.com.kenuiapps.palestra.model.Participante participante = criarAluno(cursor);
+            br.com.kenuiapps.palestra.model.Participante participante = criarParticipante(cursor);
             participantes.add(participante);
         }
         cursor.close();
@@ -36,13 +37,14 @@ public class ParticipanteDAO extends PalestraDAO{
     }
 
 
-    private br.com.kenuiapps.palestra.model.Participante criarAluno(Cursor cursor) {
+    private Participante criarParticipante(Cursor cursor) {
         br.com.kenuiapps.palestra.model.Participante participante = new br.com.kenuiapps.palestra.model.Participante(
                 cursor.getString(cursor.getColumnIndex(DataBaseHelper.Participante.NOME)),
                 cursor.getString(cursor.getColumnIndex(DataBaseHelper.Participante.TELEFONE)),
                 cursor.getString(cursor.getColumnIndex(DataBaseHelper.Participante.ENDERECO)),
                 cursor.getString(cursor.getColumnIndex(DataBaseHelper.Participante.EMAIL)),
-                cursor.getInt(cursor.getColumnIndex(DataBaseHelper.Participante.PRESENTE))
+                cursor.getInt(cursor.getColumnIndex(DataBaseHelper.Participante.PRESENTE)),
+                cursor.getInt(cursor.getColumnIndex(DataBaseHelper.Participante.TAMANHO_BLUSA))
         );
         participante.setId(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.Participante.ID)));
         return participante;

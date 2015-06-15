@@ -15,15 +15,18 @@ public class Participante {
     private String email;
     private String endereco;
     private Integer presente;
+    private Integer tamanhoDaBlusa;
+
 
     public Participante(){}
 
-    public Participante(String nome, String telefone, String endereco, String email, Integer presente) {
+    public Participante(String nome, String telefone, String endereco, String email, Integer presente, Integer tamanhoDaBlusa) {
         this.nome = nome;
         this.telefone = telefone;
         this.endereco = endereco;
         this.email = email;
         this.presente = presente;
+        this.tamanhoDaBlusa = tamanhoDaBlusa;
     }
 
     public Integer getPresente() {
@@ -82,6 +85,15 @@ public class Participante {
         values.put(DataBaseHelper.Participante.ENDERECO, getEndereco());
         values.put(DataBaseHelper.Participante.EMAIL, getEmail());
         values.put(DataBaseHelper.Participante.PRESENTE, getPresente());
+        values.put(DataBaseHelper.Participante.TAMANHO_BLUSA, getTamanhoDaBlusa());
         return values;
+    }
+
+    public Integer getTamanhoDaBlusa() {
+        return tamanhoDaBlusa;
+    }
+
+    public void setTamanhoDaBlusa(Integer tamanhoDaBlusa) {
+        this.tamanhoDaBlusa = tamanhoDaBlusa;
     }
 }
