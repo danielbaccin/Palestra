@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import br.com.kenuiapps.palestra.R;
 import br.com.kenuiapps.palestra.dao.ParticipanteDAO;
@@ -31,19 +32,15 @@ public class FormularioParticipanteActivity extends ActionBarActivity{
         setContentView(R.layout.formulario_participante);
 
         nome = (TextView) findViewById(R.id.edit_nome_aluno);
-        //endereco = (TextView) findViewById(R.id.edit_endereco_aluno);
         email = (TextView) findViewById(R.id.edit_email_aluno);
         telefone = (TextView) findViewById(R.id.edit_telefone_aluno);
         tamanhoDaBlusa = (RadioGroup) findViewById(R.id.tamanhoDaBlusa);
 
         actionBar = getSupportActionBar();
-
         if(actionBar!=null){
             actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFF4500));
             actionBar.setTitle(R.string.titulo_formulario);
         }
-
-
     }
 
     @Override

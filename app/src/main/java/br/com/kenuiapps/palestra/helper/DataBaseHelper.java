@@ -11,7 +11,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 
     public static final String BANCO_DADOS = "Palestra";
-    private static int VERSAO = 1;
+    private static int VERSAO = 2;
 
     public DataBaseHelper(Context context) {
         super(context, BANCO_DADOS, null, VERSAO);
@@ -20,21 +20,24 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE participante"+
-                    " (_id INTEGER PRIMARY KEY," +
-                    " nome TEXT," +
-                    " telefone TEXT," +
-                    " endereco TEXT," +
-                    " email TEXT," +
-                    " presente INTEGER, " +
-                    " tamanhoBlusa INTEGER);"
+                    " ( " +
+                        " _id INTEGER PRIMARY KEY," +
+                        " nome TEXT," +
+                        " telefone TEXT," +
+                        " endereco TEXT," +
+                        " email TEXT," +
+                        " presente INTEGER, " +
+                        " tamanhoBlusa INTEGER" +
+                    " );"
                   );
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-
+        String dll = "DROP TABLE IF EXISTS participante";
+        db.execSQL(dll);
+        this.onCreate(db);
     }
 
 

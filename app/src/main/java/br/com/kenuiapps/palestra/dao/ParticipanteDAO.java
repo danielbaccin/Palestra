@@ -20,25 +20,30 @@ public class ParticipanteDAO extends PalestraDAO{
     public ParticipanteDAO(Context context) {
         super(context);
     }
-    public long salva(br.com.kenuiapps.palestra.model.Participante participante) {
+
+    public long salva(Participante participante) {
         ContentValues values = participante.getContentValues();
         return getDb().insert(DataBaseHelper.Participante.TABELA, null, values);
     }
 
-    public List<Participante> getLista() {
-        Cursor cursor = getDb().query(DataBaseHelper.Participante.TABELA, DataBaseHelper.Participante.COLUNAS, null, null, null, null, null);
-        List<br.com.kenuiapps.palestra.model.Participante> participantes = new ArrayList<br.com.kenuiapps.palestra.model.Participante>();
+    public List<Participante> getListaDeParticipantes() {
+        Cursor cursor = getDb().query(DataBaseHelper.Participante.TABELA,
+                                DataBaseHelper.Participante.COLUNAS,
+                                null, null, null, null, null);
+
+        List<Participante> participantes = new ArrayList<Participante>();
         while(cursor.moveToNext()){
-            br.com.kenuiapps.palestra.model.Participante participante = criarParticipante(cursor);
+            Participante participante = criarParticipante(cursor);
             participantes.add(participante);
         }
+
         cursor.close();
         return participantes;
     }
 
 
     private Participante criarParticipante(Cursor cursor) {
-        br.com.kenuiapps.palestra.model.Participante participante = new br.com.kenuiapps.palestra.model.Participante(
+        Participante participante = new Participante(
                 cursor.getString(cursor.getColumnIndex(DataBaseHelper.Participante.NOME)),
                 cursor.getString(cursor.getColumnIndex(DataBaseHelper.Participante.TELEFONE)),
                 cursor.getString(cursor.getColumnIndex(DataBaseHelper.Participante.ENDERECO)),

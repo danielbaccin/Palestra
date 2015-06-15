@@ -68,7 +68,7 @@ public class ListaParticipantesActivity extends ActionBarActivity implements  Ad
 
     private void carregaLista() {
         dao = new ParticipanteDAO(this);
-        List<Participante> participantes =  dao.getLista();
+        List<Participante> participantes =  dao.getListaDeParticipantes();
         dao.close();
 
         ListaParticipantesAdapter listaParticipantesAdapter = new ListaParticipantesAdapter(this, participantes);
